@@ -1,0 +1,255 @@
+{
+	"collection": "demo_articles",
+	"managed": true,
+	"hidden": false,
+	"fields": {
+		"id": {
+			"field": "id",
+			"datatype": "INT",
+			"type": "integer",
+			"interface": "primary-key",
+			"required": true,
+			"sort": 100,
+			"primary_key": true,
+			"auto_increment": true,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"length": "10"
+		},
+		"separator4": {
+			"field": "separator4",
+			"type": "ALIAS",
+			"interface": "divider",
+			"sort": 1000,
+			"options": {
+				"style": "medium",
+				"title": "Hero Photo",
+				"description": "The article's main hero photo",
+				"hr": true
+			}
+		},
+		"hero_photo": {
+			"field": "hero_photo",
+			"note": "Preferred photo size: 3200px (W) X 800px (H)",
+			"datatype": "INT",
+			"type": "file",
+			"interface": "file",
+			"required": true,
+			"sort": 1100,
+			"options": {
+				"viewType": "cards",
+				"viewOptions": {
+					"title": "title",
+					"subtitle": "type",
+					"content": "description",
+					"src": "data"
+				}
+			}
+		},
+		"separator5": {
+			"field": "separator5",
+			"type": "ALIAS",
+			"interface": "divider",
+			"sort": 2000,
+			"options": {
+				"style": "medium",
+				"title": "Article Content",
+				"description": "All main article content and attributes that require translation, choose an input language",
+				"hr": true
+			}
+		},
+		"content_translations": {
+			"field": "content_translations",
+			"note": "Choose an input language",
+			"type": "TRANSLATION",
+			"interface": "translation",
+			"sort": 2100,
+			"required": false,
+			"options": {
+				"languagesCollection": "demo_content_languages",
+				"defaultLanguage": "en-US",
+				"languagesPrimaryKeyField": "code",
+				"languagesNameField": "name",
+				"translationLanguageField": "language_code"
+			}
+		},
+		"separator6": {
+			"field": "separator6",
+			"type": "ALIAS",
+			"interface": "divider",
+			"sort": 3000,
+			"options": {
+				"style": "medium",
+				"title": "Article Sections",
+				"description": "Additional section content",
+				"hr": true
+			}
+		},
+		"sections": {
+			"field": "sections",
+			"type": "O2M",
+			"interface": "one-to-many",
+			"required": false,
+			"sort": 3100,
+			"options": {
+				"preferences": {
+					"viewType": "tabular",
+					"viewQuery": {
+						"fields": [
+							"display_order",
+							"label"
+						]
+					}
+				},
+				"fields": "display_order, label",
+				"allow_select": false
+			}
+		},
+		"url": {
+			"field": "url",
+			"note": "This is the permanent URL of this page",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"required": true,
+			"sort": 4100,
+			"hidden_detail": false,
+			"hidden_browse": false,
+			"options": {
+				"placeholder": "E.g. '97-best-coffee-houses-in-vienna'.",
+				"trim": true,
+				"showCharacterCount": true,
+				"formatValue": false,
+				"width": "auto"
+			},
+			"length": "500"
+		},
+		"author": {
+			"field": "author",
+			"note": "Pick an author of the article.",
+			"datatype": "INT",
+			"type": "m2o",
+			"interface": "many-to-one",
+			"sort": 4800,
+			"options": {
+				"template": "{{name}}",
+				"placeholder": "Select an author",
+				"threshold": 20,
+				"preferences": {
+					"viewType": "tabular",
+					"viewQuery": {
+						"fields": [
+							"id",
+							"name"
+						]
+					}
+				}
+			}
+		},
+		"status": {
+			"field": "status",
+			"datatype": "VARCHAR",
+			"type": "status",
+			"interface": "status",
+			"required": false,
+			"sort": 4900,
+			"hidden_detail": false,
+			"hidden_browse": false,
+			"default_value": "draft",
+			"options": {
+				"status_mapping": {
+					"draft": {
+						"name": "Draft",
+						"text_color": "white",
+						"background_color": "blue-grey-200",
+						"browse_subdued": true,
+						"browse_badge": true,
+						"soft_delete": false,
+						"published": false
+					},
+					"live": {
+						"name": "Live",
+						"text_color": "green",
+						"background_color": "accent",
+						"browse_subdued": false,
+						"browse_badge": true,
+						"soft_delete": false,
+						"published": true
+					},
+					"deactivated": {
+						"name": "deactivated",
+						"text_color": "black",
+						"background_color": "brown-500",
+						"browse_subdued": true,
+						"browse_badge": true,
+						"soft_delete": false,
+						"published": false
+					},
+					"deleted": {
+						"name": "deleted",
+						"text_color": "red",
+						"background_color": "red",
+						"browse_subdued": true,
+						"browse_badge": true,
+						"soft_delete": true,
+						"published": false
+					}
+				}
+			},
+			"length": "20"
+		},
+		"created_by": {
+			"field": "created_by",
+			"datatype": "INT",
+			"type": "user_created",
+			"interface": "user-created",
+			"required": false,
+			"sort": 10100,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"created_on": {
+			"field": "created_on",
+			"datatype": "DATETIME",
+			"type": "datetime_created",
+			"interface": "datetime-created",
+			"required": false,
+			"sort": 10200,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		},
+		"modified_by": {
+			"field": "modified_by",
+			"datatype": "INT",
+			"type": "user_updated",
+			"interface": "user-updated",
+			"required": false,
+			"sort": 10300,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"modified_on": {
+			"field": "modified_on",
+			"datatype": "DATETIME",
+			"type": "datetime_updated",
+			"interface": "datetime-updated",
+			"required": false,
+			"sort": 10400,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		}
+	},
+	"icon": "flight_land"
+}

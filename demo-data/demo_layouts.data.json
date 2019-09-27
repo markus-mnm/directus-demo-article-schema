@@ -1,0 +1,14 @@
+[
+   {
+      "label": "layout-one",
+      "type": "Blog",
+      "layout": "vertical",
+      "number_of_rows": 2
+   },
+   {
+      "label": "layout-three",
+      "type": "Special",
+      "layout": "flow",
+      "number_of_rows": 2
+   }
+]

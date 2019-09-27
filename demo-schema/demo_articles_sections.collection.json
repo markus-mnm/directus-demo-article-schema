@@ -1,0 +1,193 @@
+{
+	"collection": "demo_articles_sections",
+	"managed": true,
+	"hidden": true,
+	"fields": {
+		"id": {
+			"field": "id",
+			"datatype": "INT",
+			"type": "integer",
+			"interface": "primary-key",
+			"sort": 100,
+			"required": true,
+			"primary_key": true,
+			"auto_increment": true,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"length": "10"
+		},
+		"parent_id": {
+			"field": "parent_id",
+			"note": "The id of the article",
+			"datatype": "INT",
+			"type": "m2o",
+			"interface": "many-to-one",
+			"required": false,
+			"sort": 300,
+			"hidden_detail": true,
+			"hidden_browse": true
+		},
+		"label": {
+			"field": "label",
+			"note": "An internal label to identify the section, e.g. the English heading",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"required": true,
+			"sort": 400,
+			"options": {
+				"placeholder": "internal label",
+				"trim": true,
+				"showCharacterCount": true,
+				"formatValue": false,
+				"width": "auto"
+			},
+			"length": "400"
+		},
+		"display_order": {
+			"field": "display_order",
+			"note": "Display in creation order by default",
+			"datatype": "INT",
+			"type": "sort",
+			"interface": "sort",
+			"required": false,
+			"default_value": 99,
+			"sort": 1200,
+			"hidden_detail": false,
+			"hidden_browse": false,
+			"length": "10"
+		},
+		"photo": {
+			"field": "photo",
+			"note": "The section photo",
+			"datatype": "INT",
+			"type": "file",
+			"interface": "file",
+			"required": false,
+			"sort": 1300,
+			"options": {
+				"viewType": "cards",
+				"viewOptions": {
+					"title": "title",
+					"subtitle": "type",
+					"content": "description",
+					"src": "data"
+				}
+			}
+		},
+		"photo_credit": {
+			"field": "photo_credit",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"required": false,
+			"sort": 1400,
+			"options": {
+				"trim": true,
+				"showCharacterCount": true
+			},
+			"length": "100"
+		},
+		"separator2": {
+			"field": "separator2",
+			"type": "ALIAS",
+			"interface": "divider",
+			"sort": 2100,
+			"options": {
+				"style": "medium",
+				"title": "Translated section content",
+				"description": "All section content and attributes that require translation, choose an input language",
+				"hr": true
+			}
+		},
+		"content_translations": {
+			"field": "content_translations",
+			"note": "Choose an input language",
+			"type": "TRANSLATION",
+			"interface": "translation",
+			"required": false,
+			"sort": 2200,
+			"options": {
+				"languagesCollection": "demo_content_languages",
+				"defaultLanguage": "en-US",
+				"languagesPrimaryKeyField": "code",
+				"languagesNameField": "name",
+				"translationLanguageField": "language_code"
+			}
+		},
+      "layout_details": {
+        "field": "layout_details",
+        "note": "Pick a layout.",
+        "datatype": "INT",
+        "type": "m2o",
+        "interface": "many-to-one",
+        "sort": 2400,
+        "options": {
+          "template": "{{label}}",
+          "placeholder": "Select a layout",
+          "threshold": 20,
+          "preferences": {
+            "viewType": "tabular",
+            "viewQuery": {
+              "fields": [
+                "id",
+                "label"
+              ]
+            }
+          }
+        }
+      },
+		"created_by": {
+			"field": "created_by",
+			"datatype": "INT",
+			"type": "user_created",
+			"interface": "user-created",
+			"required": false,
+			"sort": 10100,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"created_on": {
+			"field": "created_on",
+			"datatype": "DATETIME",
+			"type": "datetime_created",
+			"interface": "datetime-created",
+			"required": false,
+			"sort": 10200,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		},
+		"modified_by": {
+			"field": "modified_by",
+			"datatype": "INT",
+			"type": "user_updated",
+			"interface": "user-updated",
+			"required": false,
+			"sort": 10300,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"modified_on": {
+			"field": "modified_on",
+			"datatype": "DATETIME",
+			"type": "datetime_updated",
+			"interface": "datetime-updated",
+			"required": false,
+			"sort": 10400,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		}
+	}
+}

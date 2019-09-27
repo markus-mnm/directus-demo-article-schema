@@ -1,0 +1,20 @@
+[
+	{
+		"language_code": "en-US",
+		"parent_id": 1,
+      "header": "carrot salad", 
+      "text": "carrot salad recipe"
+	},
+	{
+		"language_code": "en-US",
+		"parent_id": 2,
+      "header": "carrot soup", 
+		"text": "Carrot soup recipe"
+	},
+	{
+		"language_code": "fr-FR",
+		"parent_id": 2,
+      "header": "soupe aux carottes", 
+		"text": "recette de soupe aux carottes"
+	}
+]

@@ -1,0 +1,124 @@
+{
+	"collection": "demo_articles_translations",
+	"managed": true,
+	"hidden": true,
+	"fields": {
+		"id": {
+			"field": "id",
+			"datatype": "INT",
+			"primary_key": true,
+			"auto_increment": true,
+			"type": "integer",
+			"interface": "primary-key",
+			"sort": 100,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": true,
+			"length": "10"
+		},
+		"language_code": {
+			"field": "language_code",
+			"type": "lang",
+			"datatype": "VARCHAR",
+			"interface": "language",
+			"sort": 200,
+			"required": true,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"trim": true
+			},
+			"length": "10"
+		},
+		"parent_id": {
+			"field": "parent_id",
+			"note": "The id of the article",
+			"datatype": "INT",
+			"type": "m2o",
+			"interface": "many-to-one",
+			"sort": 300,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false
+		},
+      "header": {
+         "field": "header",
+         "datatype": "VARCHAR",
+         "type": "string",
+         "interface": "text-input",
+         "sort": 1300,
+         "required": true,
+         "options": {
+            "placeholder": "The article header",
+            "trim": true,
+            "showCharacterCount": true
+         },
+         "length": "300"
+      },
+      "text": {
+         "field": "text",
+         "note": "The section text",
+         "datatype": "TEXT",
+         "type": "string",
+         "interface": "markdown",
+         "sort": 1500,
+         "required": false,
+         "options": {
+            "rows": 12,
+            "placeholder": "Enter section text here"
+         }
+      },
+		"created_by": {
+			"field": "created_by",
+			"datatype": "INT",
+			"type": "user_created",
+			"interface": "user-created",
+			"sort": 10100,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"created_on": {
+			"field": "created_on",
+			"datatype": "DATETIME",
+			"type": "datetime_created",
+			"interface": "datetime-created",
+			"sort": 10200,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"readonly": true
+		},
+		"modified_by": {
+			"field": "modified_by",
+			"datatype": "INT",
+			"type": "user_updated",
+			"interface": "user-updated",
+			"sort": 10300,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"modified_on": {
+			"field": "modified_on",
+			"datatype": "DATETIME",
+			"type": "datetime_updated",
+			"interface": "datetime-updated",
+			"sort": 10400,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"readonly": true
+		}
+	}
+}

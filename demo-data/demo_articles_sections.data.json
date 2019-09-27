@@ -1,0 +1,18 @@
+[
+	{
+		"parent_id": 1,
+		"label": "Sliced carrots",
+		"display_order": 3,
+		"photo": 256,
+		"photo_credit": "unknown",
+		"layout_details": 1
+	},
+	{
+		"parent_id": 1,
+		"label": "Cooked?",
+		"display_order": 1,
+		"photo": 256,
+		"photo_credit": "Ansel",
+		"layout_details": 1
+	}
+]

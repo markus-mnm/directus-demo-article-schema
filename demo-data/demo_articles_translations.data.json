@@ -1,0 +1,14 @@
+[
+	{
+		"language_code": "en-US",
+		"parent_id": 1,
+      "header": "Carrots from Tokyo",
+      "text": "Learn about carrots from Tokyo"
+	},
+   {
+      "language_code": "fr-FR",
+      "parent_id": 1,
+      "header": "Carottes de Tokyo",
+      "text": "En savoir plus sur les carottes de Tokyo"
+   }	
+]

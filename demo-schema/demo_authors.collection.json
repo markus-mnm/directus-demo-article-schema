@@ -1,0 +1,92 @@
+{
+	"collection": "demo_authors",
+	"managed": true,
+	"hidden": false,
+	"fields": {
+		"id": {
+			"field": "id",
+			"datatype": "INT",
+			"type": "integer",
+			"interface": "primary-key",
+			"required": true,
+			"sort": 100,
+			"primary_key": true,
+			"auto_increment": true,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"length": "10"
+		},
+		"name": {
+			"field": "name",
+			"note": "Author Name. This will be used for content crediting purposes",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"required": true,
+			"sort": 1100,
+			"hidden_detail": false,
+			"hidden_browse": false,
+			"options": {
+				"placeholder": "e.g. John Grisham",
+				"trim": true,
+				"showCharacterCount": true,
+				"formatValue": false,
+				"width": "auto"
+			},
+			"length": "500"
+		},
+		"created_by": {
+			"field": "created_by",
+			"datatype": "INT",
+			"type": "user_created",
+			"interface": "user-created",
+			"required": false,
+			"sort": 10100,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"created_on": {
+			"field": "created_on",
+			"datatype": "DATETIME",
+			"type": "datetime_created",
+			"interface": "datetime-created",
+			"required": false,
+			"sort": 10200,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		},
+		"modified_by": {
+			"field": "modified_by",
+			"datatype": "INT",
+			"type": "user_updated",
+			"interface": "user-updated",
+			"required": false,
+			"sort": 10300,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"modified_on": {
+			"field": "modified_on",
+			"datatype": "DATETIME",
+			"type": "datetime_updated",
+			"interface": "datetime-updated",
+			"required": false,
+			"sort": 10400,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		}
+	},
+	"icon": "person"
+}

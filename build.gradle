@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.directus.tools:directus7tools:0.1.1"
+    }
+}
+
+group = 'io.directus.tools'
+version = "0.1.1"
+
+import io.directus.tools.*
+
+/**
+ * deletes all demo collections (this is rerunnable)
+ */
+tasks.register("drop-demo-collections") {
+    doLast {
+         DirectusToolsCli.checkEnvironmentVars()
+         def apiBaseUrl = System.getenv("DIRECTUS_API_HOST")
+         def token = System.getenv("DIRECTUS_ADMIN_TOKEN")
+         def sdk = new DirectusAdministrationSdk(apiBaseUrl, token)
+
+         // test a basic call to see if things are working
+         println "api config:"
+         println sdk.getDirectusData("/")
+
+         sdk.dropCollectionIfExists("demo_articles");
+         sdk.dropCollectionIfExists("demo_articles_sections");
+         sdk.dropCollectionIfExists("demo_articles_sections_translations");
+         sdk.dropCollectionIfExists("demo_articles_translations");
+         sdk.dropCollectionIfExists("demo_authors");
+         sdk.dropCollectionIfExists("demo_content_languages");
+         sdk.dropCollectionIfExists("demo_layouts");
+
+         sdk.deleteM2ORelation ("demo_articles", "author", "demo_authors", null)
+         sdk.deleteM2ORelation("demo_articles_translations", "parent_id", "demo_articles", "content_translations")
+         sdk.deleteM2ORelation("demo_articles_sections", "parent_id", "demo_articles", "sections")
+         sdk.deleteM2ORelation("demo_articles_sections", "layout_details", "demo_layouts", null)
+         sdk.deleteM2ORelation("demo_articles_sections_translations", "parent_id", "demo_articles_sections", "content_translations")
+   }         
+}
+
+
+/**
+ * create the demo collections (will fail if they already exist)
+ */
+tasks.register("apply-demo-collections")  {
+    doLast {
+
+         DirectusToolsCli.checkEnvironmentVars()
+         def apiBaseUrl = System.getenv("DIRECTUS_API_HOST")
+         def token = System.getenv("DIRECTUS_ADMIN_TOKEN")
+         def sdk = new DirectusAdministrationSdk(apiBaseUrl, token)
+
+         // test a basic call to see if things are working
+         println "api config:"
+         println sdk.getDirectusData("/")
+
+         sdk.createCollection(file("$projectDir/demo-schema/demo_authors.collection.json"))
+         sdk.createCollection(file("$projectDir/demo-schema/demo_layouts.collection.json"))
+         sdk.createCollection(file("$projectDir/demo-schema/demo_content_languages.collection.json"))
+
+         sdk.createCollection(file("$projectDir/demo-schema/demo_articles.collection.json"))
+         sdk.createCollection(file("$projectDir/demo-schema/demo_articles_translations.collection.json"))
+         sdk.createCollection(file("$projectDir/demo-schema/demo_articles_sections.collection.json"))
+         sdk.createCollection(file("$projectDir/demo-schema/demo_articles_sections_translations.collection.json"))
+
+         sdk.createM2ORelation ("demo_articles", "author", "demo_authors", null)
+
+         sdk.createM2ORelation("demo_articles_translations", "parent_id", "demo_articles", "content_translations")
+         sdk.createM2ORelation("demo_articles_sections", "parent_id", "demo_articles", "sections")
+         sdk.createM2ORelation("demo_articles_sections", "layout_details", "demo_layouts", null)
+         sdk.createM2ORelation("demo_articles_sections_translations", "parent_id", "demo_articles_sections", "content_translations")
+
+         sdk.addData("demo_content_languages", file("$projectDir/demo-data/demo_content_languages.data.json"))
+         sdk.addData("demo_layouts", file("$projectDir/demo-data/demo_layouts.data.json"))
+         sdk.addData("demo_authors", file("$projectDir/demo-data/demo_authors.data.json"))
+
+         sdk.addData("demo_articles", file("$projectDir/demo-data/demo_articles.data.json"))
+         sdk.addData("demo_articles_translations", file("$projectDir/demo-data/demo_articles_translations.data.json"))
+         sdk.addData("demo_articles_sections", file("$projectDir/demo-data/demo_articles_sections.data.json"))
+         sdk.addData("demo_articles_sections_translations", file("$projectDir/demo-data/demo_articles_sections_translations.data.json"))
+    }
+}

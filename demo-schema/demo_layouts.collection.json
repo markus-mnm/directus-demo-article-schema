@@ -1,0 +1,148 @@
+{
+	"collection": "demo_layouts",
+	"managed": true,
+	"hidden": false,
+	"fields": {
+		"id": {
+			"field": "id",
+			"datatype": "INT",
+			"type": "integer",
+			"interface": "primary-key",
+			"sort": 100,
+			"required": true,
+			"primary_key": true,
+			"auto_increment": true,
+			"hidden_detail": true,
+			"hidden_browse": true
+		},
+		"label": {
+			"field": "label",
+			"note": "An internal label to identify the layout",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"required": true,
+			"sort": 200,
+			"options": {
+				"placeholder": "internal label",
+				"trim": true,
+				"showCharacterCount": true,
+				"formatValue": false
+			},
+			"length": "400"
+		},
+		"separator1": {
+			"field": "separator1",
+			"type": "ALIAS",
+			"interface": "divider",
+			"sort": 1100,
+			"options": {
+				"style": "large",
+				"title": "Layout attributes",
+				"description": "Choose the type and layout",
+				"hr": true
+			}
+		},
+		"type": {
+			"field": "type",
+			"note": "The type of the codes",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "dropdown",
+			"required": true,
+			"sort": 1200,
+			"default_value": "Blog",
+			"options": {
+				"choices": {
+					"Special": "Special",
+					"Blog": "Blog"
+				},
+				"placeholder": "Choose the type of layout",
+				"wrapWithDelimiter": true,
+				"formatting": true
+			},
+			"length": "100"
+		},
+		"layout": {
+			"field": "layout",
+			"note": "This decides the layout in the front end",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"required": true,
+			"sort": 1300,
+			"default_value": "flow",
+			"interface": "dropdown",
+			"options": {
+				"choices": {
+					"vertical": "vertical",
+					"flow": "flow"
+				},
+				"placeholder": "Choose a layout option...",
+				"wrapWithDelimiter": true,
+				"formatting": true
+			},
+			"length": 50
+		},
+		"number_of_rows": {
+			"field": "number_of_rows",
+			"datatype": "INT",
+			"type": "integer",
+			"interface": "numeric",
+			"required": true,
+			"sort": 1400,
+			"default_value": 1
+		},
+		"created_by": {
+			"field": "created_by",
+			"datatype": "INT",
+			"type": "user_created",
+			"interface": "user-created",
+			"required": false,
+			"sort": 10100,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"created_on": {
+			"field": "created_on",
+			"datatype": "DATETIME",
+			"type": "datetime_created",
+			"interface": "datetime-created",
+			"required": false,
+			"sort": 10200,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		},
+		"modified_by": {
+			"field": "modified_by",
+			"datatype": "INT",
+			"type": "user_updated",
+			"interface": "user-updated",
+			"required": false,
+			"sort": 10300,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true
+		},
+		"modified_on": {
+			"field": "modified_on",
+			"datatype": "DATETIME",
+			"type": "datetime_updated",
+			"interface": "datetime-updated",
+			"required": false,
+			"sort": 10400,
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"readonly": true
+		}
+	}
+}

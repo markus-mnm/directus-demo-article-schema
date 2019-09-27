@@ -1,0 +1,111 @@
+{
+	"collection": "demo_content_languages",
+	"managed": false,
+	"fields": {
+		"id": {
+			"field": "id",
+			"datatype": "INT",
+			"primary_key": true,
+			"auto_increment": true,
+			"type": "integer",
+			"interface": "primary-key",
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": true,
+			"sort": 100,
+			"length": "10"
+		},
+		"code": {
+			"field": "code",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"unique": true,
+			"hidden_detail": false,
+			"hidden_browse": false,
+			"required": true,
+			"sort": 100,
+			"options": {
+				"placeholder": "The language code aka locale",
+				"trim": true,
+				"width": "auto"
+			},
+			"length": "20"
+		},
+		"name": {
+			"field": "name",
+			"datatype": "VARCHAR",
+			"type": "string",
+			"interface": "text-input",
+			"unique": true,
+			"hidden_detail": false,
+			"hidden_browse": false,
+			"required": true,
+			"sort": 200,
+			"options": {
+				"placeholder": "The name of the language",
+				"trim": true,
+				"width": "auto"
+			},
+			"length": "200"
+		},
+		"created_by": {
+			"field": "created_by",
+			"datatype": "INT",
+			"type": "user_created",
+			"interface": "user-created",
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"sort": 400,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true,
+			"length": "10"
+		},
+		"created_on": {
+			"field": "created_on",
+			"datatype": "DATETIME",
+			"signed": true,
+			"type": "datetime_created",
+			"interface": "datetime-created",
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"sort": 500,
+			"readonly": true
+		},
+		"modified_by": {
+			"field": "modified_by",
+			"datatype": "INT",
+			"type": "user_updated",
+			"interface": "user-updated",
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"options": {
+				"template": "{{first_name}} {{last_name}}",
+				"display": "both"
+			},
+			"readonly": true,
+			"sort": 600,
+			"length": "10"
+		},
+		"modified_on": {
+			"field": "modified_on",
+			"datatype": "DATETIME",
+			"signed": true,
+			"type": "datetime_updated",
+			"interface": "datetime-updated",
+			"hidden_detail": true,
+			"hidden_browse": true,
+			"required": false,
+			"sort": 700,
+			"readonly": true
+		}
+	},
+	"icon": "g_translate",
+	"translation": null
+}
