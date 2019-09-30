@@ -24,9 +24,10 @@ To apply the schema plus data run
     ./gradlew --info drop-demo-collections
     ./gradlew --info apply-demo-collections
 
-
-This project depends on https://github.com/markus-mnm/directus7javatools.git via a Gradle sourceControl dependency. See settings.gradle for the set up
-For the first run it will download a number of dependencies, the total run time for the tasks should be < 30 seconds, thought that also depends on the speed of Directus
+If you are new to gradle check out the the Gradle docu or this project's [build file](https://github.com/markus-mnm/directus-demo-article-schema/blob/master/build.gradle).
 
 
+This project depends on https://github.com/markus-mnm/directus7javatools.git via a Gradle sourceControl dependency.
+See [settings.gradle](https://github.com/markus-mnm/directus-demo-article-schema/blob/master/settings.gradle) for the set up
+The first run will download a number of dependencies, the total run time for the tasks should be < 30 seconds, thought this will also depend on the speed of the target Directus host.
 
